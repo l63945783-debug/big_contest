@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+google-generativeai
+matplotlib
+seaborn
+requests
+langchain-core
+langchain-google-genai
+openpyxl
