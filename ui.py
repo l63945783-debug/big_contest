@@ -79,7 +79,7 @@ with tab2:
         else:
             corr = numeric_df.corr()
             fig, ax = plt.subplots(figsize=(10, 8))
-            sns.heatmap(corr, annot=True, cmap="RdBu_r", linewidths=0.5, ax=ax)
+            sns.heatmap(corr, annot=False, cmap="RdBu_r", linewidths=0.5, ax=ax)
             ax.set_title("주요 변수 간 상관관계")
             st.pyplot(fig)
     else:

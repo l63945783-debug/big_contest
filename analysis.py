@@ -15,7 +15,7 @@ def init_model(api_key: str):
     return ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         google_api_key=api_key,
-        temperature=0.8
+        temperature=0.5
     )
 
 
@@ -206,7 +206,6 @@ def generate_report(chat_model, df: pd.DataFrame, question: str):
     3. 전략 제안 시에는 **STP**, **RFM**, **번들·교차판매 전략(Apriori)** 관점을 반드시 반영하세요.
     4. 제안은 데이터 근거(지표명/비율/비교군 등)를 인용해 근거 기반으로 서술하세요.
     5. 실무자가 바로 활용할 수 있는 구체적 행동(Action Plan) 형태로 작성하세요.
-    6. 만약 **객단가** 칼럼이 평균 **객단가**보다 낮다면 높일 수 있는 방법도 작성하세요.
     ---
     **출력 형식**
     - [1] 요약: 분석의 전체 방향과 핵심 발견 요약 (2~3문장) 
@@ -220,6 +219,7 @@ def generate_report(chat_model, df: pd.DataFrame, question: str):
     - 글머리표 대신 짧은 문단 중심으로 작성
     - 수치, 비율, 지표명 등은 그대로 인용 
     - 과도한 마케팅 수사는 피하고, 분석 중심으로 구체적 작성
+    - 가상데이터를 만들어 내지말고 상관관계 계수만 활용하여 작성
     """
     res = chat_model.invoke([HumanMessage(content=prompt)])
     return {
